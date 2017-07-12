@@ -1,4 +1,4 @@
-FROM elixir:1.4.4
+FROM trenpixster/elixir:1.4.4
 
 # Install node & yarn
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash - \
