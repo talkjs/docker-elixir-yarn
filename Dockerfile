@@ -7,6 +7,6 @@ RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" \
     
 # Install node, gcloud & yarn, respectively 
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash - \
-    && apt-get install -y nodejs gcloud \
+    && apt-get install -y nodejs google-cloud-sdk \
     && rm -rf /var/cache/apt \
     && npm install -g yarn
