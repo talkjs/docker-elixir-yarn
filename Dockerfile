@@ -20,3 +20,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - \
 RUN rm -rf /var/cache/apt \
 	&& apt-get update -y \
     && apt-get install -y nodejs yarn google-cloud-sdk docker-ce
+
+# Install docker-compose
+RUN sudo curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose \
+    && sudo chmod +x /usr/local/bin/docker-compose
