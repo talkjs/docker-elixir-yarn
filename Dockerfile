@@ -1,4 +1,4 @@
-FROM trenpixster/elixir:1.4.4
+FROM trenpixster/elixir:1.6.2
 
 # Prerequisites for `google-cloud-platform` - https://cloud.google.com/sdk/downloads#apt-get
 RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" \
