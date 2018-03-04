@@ -1,6 +1,6 @@
 FROM elixir:1.6.0
 
-RUN apt install lsb-release
+RUN apt-get install lsb-release
 
 # Prerequisites for `google-cloud-platform` - https://cloud.google.com/sdk/downloads#apt-get
 RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" \
