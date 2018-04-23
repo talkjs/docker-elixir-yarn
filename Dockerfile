@@ -18,6 +18,9 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 # Prerequisites for `yarn` - https://yarnpkg.com/lang/en/docs/install/#linux-tab
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 	&& echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+	
+# Prerequisites for `php`
+RUN apt-get -y sudo apt-get install php
 
 # Installs
 RUN apt-get update -y \
