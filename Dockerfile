@@ -20,7 +20,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 	&& echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 	
 # Prerequisites for `php`
-RUN apt-get -y install php
+RUN apt-get update && apt-get install -y php5 
 
 # Installs
 RUN apt-get update -y \
