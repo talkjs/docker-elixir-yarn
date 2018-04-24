@@ -1,7 +1,7 @@
 FROM elixir:1.6.0
 
 RUN apt-get update -y \ 
-    && apt-get -y install apt-transport-https curl lsb-release unzip php7.0
+    && apt-get -y install apt-transport-https curl lsb-release unzip php7.1
 
 # Prerequisites for `google-cloud-platform` - https://cloud.google.com/sdk/downloads#apt-get
 RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" \
