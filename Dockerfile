@@ -1,7 +1,7 @@
 FROM elixir:1.6.0
 
 RUN apt-get update -y \ 
-    && apt-get -y install apt-transport-https curl lsb-release unzip php5
+    && apt-get -y install apt-transport-https curl lsb-release unzip 
 
 # Prerequisites for `google-cloud-platform` - https://cloud.google.com/sdk/downloads#apt-get
 RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" \
@@ -37,7 +37,7 @@ RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/google-
 
 # Installs
 RUN apt-get update -y \
-    && apt-get install -y nodejs yarn google-cloud-sdk docker-ce
+    && apt-get install -y nodejs yarn google-cloud-sdk docker-ce php7.0
 
 # Install docker-compose
 RUN curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose \
