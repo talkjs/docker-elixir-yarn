@@ -36,10 +36,12 @@ RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/google-
            "/opt/google/chrome/google-chrome" 
 
 # Install php7
-RUN  apt-get install python-software-properties software-properties-common \
-      && enter | LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php \
+RUN  apt-get install python-software-properties software-properties-common -y \
+      && LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php -y \
+      && apt-get autoremove \
+      && apt-get purge php5-common -y \
       && apt-get update \
-      && apt-get install php7.0 
+      && apt-get install php7.0 -y
 
 # Installs
 RUN apt-get update -y \
