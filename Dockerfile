@@ -35,9 +35,15 @@ RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/google-
       && sed -i 's|HERE/chrome"|HERE/chrome" --disable-setuid-sandbox --no-sandbox|g' \
            "/opt/google/chrome/google-chrome" 
 
+# Install php7
+RUN  apt-get install python-software-properties software-properties-common \
+      && enter | LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php \
+      && apt-get update \
+      && apt-get install php7.0 
+
 # Installs
 RUN apt-get update -y \
-    && apt-get install -y nodejs yarn google-cloud-sdk docker-ce php7.0
+    && apt-get install -y nodejs yarn google-cloud-sdk docker-ce
 
 # Install docker-compose
 RUN curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose \
