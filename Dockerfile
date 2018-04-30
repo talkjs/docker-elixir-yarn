@@ -36,12 +36,12 @@ RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/google-
            "/opt/google/chrome/google-chrome" 
 
 # Install php7
-#RUN  apt-get install python-software-properties software-properties-common -y \
-#      && LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php -y \
-#      && apt-get autoremove \
-#      && apt-get purge php5-common -y \
-#      && apt-get update \
-#      && apt-get install php7.0 -y
+RUN apt-get -y install apt-transport-https lsb-release ca-certificates \
+    && wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
+    && sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list' \
+    && apt-get update \
+    && apt-get install php7.2 -y
+
 
 # Installs
 RUN apt-get update -y \
