@@ -1,4 +1,4 @@
-FROM elixir:1.6.0
+FROM elixir:1.7.4
 
 RUN apt-get update -y \ 
     && apt-get -y install apt-transport-https curl lsb-release unzip 
