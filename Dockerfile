@@ -13,7 +13,7 @@ RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - \
     && echo "deb https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee -a /etc/apt/sources.list.d/docker.list 
 
 # Prerequisites for `node`
-RUN curl -sL https://deb.nodesource.com/setup_13.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 
 # Prerequisites for `yarn` - https://yarnpkg.com/lang/en/docs/install/#linux-tab
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
