@@ -48,5 +48,5 @@ RUN apt-get update -y \
     && apt-get install -y nodejs yarn google-cloud-sdk docker-ce
 
 # Install docker-compose
-RUN curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose \
+RUN curl -L https://github.com/docker/compose/releases/download/1.28.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose \
     && chmod +x /usr/local/bin/docker-compose
