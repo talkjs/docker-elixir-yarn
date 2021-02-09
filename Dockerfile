@@ -21,15 +21,15 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 
 # install firefox
 ENV PATH /firefox:$PATH
-RUN FIREFOX_URL="https://download-installer.cdn.mozilla.net/pub/firefox/releases/57.0/linux-x86_64/en-US/firefox-57.0.tar.bz2" \
-    FIREFOX_SHA256="c2cae016089e816c03283a359c582efab3bca34e6048ecc2382b43c1eb342457" \
+RUN FIREFOX_URL="https://download-installer.cdn.mozilla.net/pub/firefox/releases/85.0.2/linux-x86_64/en-US/firefox-85.0.2.tar.bz2" \
+    FIREFOX_SHA256="98763f4b1526811967d71e1bbb9552a9a3fd877321ecb497083b9e313b528c31" \
   && curl --silent --show-error --location --fail --retry 3 --output /tmp/firefox.tar.bz2 $FIREFOX_URL \
   && echo "$FIREFOX_SHA256 /tmp/firefox.tar.bz2" | sha256sum -c \
   && tar -jxf /tmp/firefox.tar.bz2 \
   && rm /tmp/firefox.tar.bz2 
 
 # install chrome
-RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/google-chrome-stable_current_amd64.deb https://www.slimjet.com/chrome/download-chrome.php?file=files%2F70.0.3538.77%2Fgoogle-chrome-stable_current_amd64.deb \
+RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/google-chrome-stable_current_amd64.deb https://www.slimjet.com/chrome/download-chrome.php?file=files%2F86.0.4240.75%2Fgoogle-chrome-stable_current_amd64.deb \
       && (dpkg -i /tmp/google-chrome-stable_current_amd64.deb || apt-get -fy install)  \
       && rm -rf /tmp/google-chrome-stable_current_amd64.deb \
       && sed -i 's|HERE/chrome"|HERE/chrome" --disable-setuid-sandbox --no-sandbox|g' \
