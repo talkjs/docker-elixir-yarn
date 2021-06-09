@@ -1,4 +1,4 @@
-FROM hexpm/elixir:1.12.1-erlang-24.0.2-ubuntu-bionic-20200219
+FROM hexpm/elixir:1.12.0-erlang-23.1.4.1-ubuntu-focal-20210325
 
 RUN apt-get update -y \ 
     && apt-get -y install apt-transport-https curl lsb-release unzip 
