@@ -1,4 +1,4 @@
-FROM hexpm/elixir:1.12.1-erlang-24.0.2-debian-stretch-20210326
+FROM elixir:1.12.1
 
 RUN apt-get update -y \ 
     && apt-get -y install apt-transport-https curl lsb-release unzip 
