@@ -46,6 +46,7 @@ RUN apt-get -y install apt-transport-https lsb-release ca-certificates \
 # Installs
 RUN apt-get update -y \
     && apt-get install -y nodejs yarn google-cloud-sdk docker-ce
+    && apt reinstall fonts-noto-color-emoji
 
 # Install docker-compose
 RUN curl -L https://github.com/docker/compose/releases/download/1.28.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose \
