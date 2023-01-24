@@ -29,7 +29,7 @@ RUN FIREFOX_URL="https://download-installer.cdn.mozilla.net/pub/firefox/releases
   && rm /tmp/firefox.tar.bz2 
 
 # install chrome
-RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/google-chrome-stable_current_amd64.deb https://www.slimjet.com/chrome/download-chrome.php?file=files%2F86.0.4240.75%2Fgoogle-chrome-stable_current_amd64.deb \
+RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
       && (dpkg -i /tmp/google-chrome-stable_current_amd64.deb || apt-get -fy install)  \
       && rm -rf /tmp/google-chrome-stable_current_amd64.deb \
       && sed -i 's|HERE/chrome"|HERE/chrome" --disable-setuid-sandbox --no-sandbox|g' \
