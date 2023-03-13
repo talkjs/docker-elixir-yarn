@@ -13,27 +13,27 @@ RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - \
     && echo "deb https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee -a /etc/apt/sources.list.d/docker.list 
 
 # Prerequisites for `node`
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_18.15 | bash -
 
 # Prerequisites for `yarn` - https://yarnpkg.com/lang/en/docs/install/#linux-tab
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-	&& echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 # install firefox
 ENV PATH /firefox:$PATH
 RUN FIREFOX_URL="https://download-installer.cdn.mozilla.net/pub/firefox/releases/85.0.2/linux-x86_64/en-US/firefox-85.0.2.tar.bz2" \
     FIREFOX_SHA256="98763f4b1526811967d71e1bbb9552a9a3fd877321ecb497083b9e313b528c31" \
-  && curl --silent --show-error --location --fail --retry 3 --output /tmp/firefox.tar.bz2 $FIREFOX_URL \
-  && echo "$FIREFOX_SHA256 /tmp/firefox.tar.bz2" | sha256sum -c \
-  && tar -jxf /tmp/firefox.tar.bz2 \
-  && rm /tmp/firefox.tar.bz2 
+    && curl --silent --show-error --location --fail --retry 3 --output /tmp/firefox.tar.bz2 $FIREFOX_URL \
+    && echo "$FIREFOX_SHA256 /tmp/firefox.tar.bz2" | sha256sum -c \
+    && tar -jxf /tmp/firefox.tar.bz2 \
+    && rm /tmp/firefox.tar.bz2 
 
 # install chrome
 RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
-      && (dpkg -i /tmp/google-chrome-stable_current_amd64.deb || apt-get -fy install)  \
-      && rm -rf /tmp/google-chrome-stable_current_amd64.deb \
-      && sed -i 's|HERE/chrome"|HERE/chrome" --disable-setuid-sandbox --no-sandbox|g' \
-           "/opt/google/chrome/google-chrome" 
+    && (dpkg -i /tmp/google-chrome-stable_current_amd64.deb || apt-get -fy install)  \
+    && rm -rf /tmp/google-chrome-stable_current_amd64.deb \
+    && sed -i 's|HERE/chrome"|HERE/chrome" --disable-setuid-sandbox --no-sandbox|g' \
+    "/opt/google/chrome/google-chrome" 
 
 # Install php7
 RUN apt-get -y install apt-transport-https lsb-release ca-certificates \
