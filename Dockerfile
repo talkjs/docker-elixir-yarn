@@ -1,4 +1,4 @@
-FROM elixir:1.13.3
+FROM elixir:1.15.4-otp-25-alpine
 
 RUN apt-get update -y \
     && apt-get -y install apt-transport-https curl lsb-release unzip ca-certificates gnupg
