@@ -1,7 +1,7 @@
 FROM elixir:1.13.3
 
 RUN apt-get update -y \
-    && apt-get -y install apt-transport-https curl lsb-release unzip
+    && apt-get -y install apt-transport-https curl lsb-release unzip ca-certificates gnupg
 
 # Prerequisites for `google-cloud-platform` - https://cloud.google.com/sdk/downloads#apt-get
 RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" \
@@ -13,7 +13,9 @@ RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - \
     && echo "deb https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee -a /etc/apt/sources.list.d/docker.list
 
 # Prerequisites for `node`
-RUN curl -sL https://deb.nodesource.com/setup_18.15 | bash -
+RUN mkdir -p /etc/apt/keyrings \
+    && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
+    && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_18.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
 
 # Prerequisites for `yarn` - https://yarnpkg.com/lang/en/docs/install/#linux-tab
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
@@ -45,7 +47,7 @@ RUN apt-get -y install apt-transport-https lsb-release ca-certificates \
 
 # Installs
 RUN apt-get update -y \
-    && apt-get install -y nodejs yarn google-cloud-sdk docker-ce \
+    && apt-get install -y nodejs=18.15.0-1nodesource1 yarn google-cloud-sdk docker-ce \
     && apt reinstall fonts-noto-color-emoji
 
 # Install docker-compose
