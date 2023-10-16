@@ -37,17 +37,13 @@ RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/google-
     && sed -i 's|HERE/chrome"|HERE/chrome" --disable-setuid-sandbox --no-sandbox|g' \
     "/opt/google/chrome/google-chrome"
 
-# Install php7
-RUN apt-get -y install apt-transport-https lsb-release ca-certificates \
-    && wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
+# Prerequisites for php7
+RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
     && sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list' \
-    && apt-get update \
-    && apt-get install php7.2 -y
-
 
 # Installs
 RUN apt-get update -y \
-    && apt-get install -y nodejs=18.15.0-1nodesource1 yarn google-cloud-sdk docker-ce \
+    && apt-get install -y php7.2 nodejs=18.15.0-1nodesource1 yarn google-cloud-sdk docker-ce \
     && apt reinstall fonts-noto-color-emoji
 
 # Install docker-compose
