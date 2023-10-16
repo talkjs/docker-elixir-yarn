@@ -39,7 +39,7 @@ RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/google-
 
 # Prerequisites for php7
 RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
-    && sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list' \
+    && sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
 
 # Installs
 RUN apt-get update -y \
