@@ -27,3 +27,6 @@ RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 RUN apt-get update -y \
     && apt-get install -y php8.2 nodejs=18.15.0-1nodesource1 yarn \
     && apt reinstall fonts-noto-color-emoji
+
+# Edit /etc/hosts
+RUN echo -e "127.0.0.1 localtest.me\n::1 localtest.me" > /etc/hosts
