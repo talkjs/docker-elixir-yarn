@@ -29,4 +29,4 @@ RUN apt-get update -y \
     && apt reinstall fonts-noto-color-emoji
 
 # Edit /etc/hosts
-RUN echo -e "127.0.0.1 localtest.me\n::1 localtest.me" > /etc/hosts
+RUN echo -e "127.0.0.1 localtest.me\n::1 localtest.me" >> /etc/hosts
