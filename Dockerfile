@@ -25,5 +25,5 @@ RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 
 # Installs
 RUN apt-get update -y \
-    && apt-get install -y php8.2 nodejs=18.15.0-1nodesource1 yarn \
+    && apt-get install -y php8.2 nodejs=18.15.0-1nodesource1 yarn git \
     && apt reinstall fonts-noto-color-emoji
